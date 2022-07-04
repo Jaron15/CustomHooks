@@ -1,17 +1,10 @@
-import { useState, useEffect } from 'react';
-
 import Card from './Card';
+import useCounter from '../hooks/use-counter';
 
 const ForwardCounter = () => {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter((prevCounter) => prevCounter + 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+//bc we returned counter in useCounter the updated number will be returned
+// here we are storing that number in a variable called counter
+  const counter = useCounter();
 
   return <Card>{counter}</Card>;
 };

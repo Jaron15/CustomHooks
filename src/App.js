@@ -15,16 +15,13 @@ function App() {
       }
 
       setTasks(loadedTasks);
-  }
+  };
 
-  const {isLoading, error, sendRequest: fetchTasks} = useHttp(
-    {url: 'https://react-http-312f4-default-rtdb.firebaseio.com/tasks.json'},
-    transformTasks
-    );
+  const {isLoading, error, sendRequest: fetchTasks} = useHttp();
 
 
   useEffect(() => {
-    fetchTasks();
+    fetchTasks({url: 'https://react-http-312f4-default-rtdb.firebaseio.com/tasks.json'}, transformTasks);
   }, [fetchTasks]);
 
   const taskAddHandler = (task) => {
